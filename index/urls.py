@@ -18,5 +18,7 @@ urlpatterns = {
     # 一个键值对代表一个参数，键代表参数名，值代表参数值，
     # 参数值没有数据格式限制，可以为对象、字符串、列表、元组
     # 参数为字典的URL
-    re_path('dict/(?P<year>[0-9]{4}).htm', views.myyear_dict, {'month': '05'}, name='myyear_dict')
+    re_path('dict/(?P<year>[0-9]{4}).htm', views.myyear_dict, {'month': '05'}, name='myyear_dict'),
+
+    path('download.html',views.download)
 }
