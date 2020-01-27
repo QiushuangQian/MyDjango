@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import csv
 
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello World.")
+    # return HttpResponse("Hello World.")
+    return render(request,'index.html',context={'title':'首页'},status=500)
 
 
 def mydate(request, year, month, day):
@@ -35,3 +36,9 @@ def download(request):
     writer = csv.writer(response)
     writer.writerow(['First row', 'A', 'B', 'C'])
     return response
+
+def login(request):
+    #相对路径
+    # return redirect('/')
+    #绝对路径
+    return redirect('http://127.0.0.1:8000/')

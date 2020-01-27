@@ -136,4 +136,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 在MyDjango的根目录中存放静态资源
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'public_static'), os.path.join(BASE_DIR, 'index_static'), ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'public_static'), os.path.join(BASE_DIR, 'index_static'), ]

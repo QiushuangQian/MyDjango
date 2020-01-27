@@ -2,7 +2,9 @@ from django.urls import path, re_path
 from . import views
 
 urlpatterns = {
+    # 首页
     path('', views.index),
+
     # 添加带有字符型，整型，slug的URL
     # <>为URL设置变量；冒号前为数据类型，后为变量名
     # path('<str:year>/<int:month>/<slug:day>',views.mydate)
@@ -20,5 +22,7 @@ urlpatterns = {
     # 参数为字典的URL
     re_path('dict/(?P<year>[0-9]{4}).htm', views.myyear_dict, {'month': '05'}, name='myyear_dict'),
 
-    path('download.html',views.download)
+    path('download.html', views.download),
+
+    path('login.html',views.login)
 }
