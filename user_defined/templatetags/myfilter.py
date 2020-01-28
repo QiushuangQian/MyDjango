@@ -19,4 +19,4 @@ def myreplace(value, agrs):
     return value.replace(oldValue, newValue)
 
 # HTML模板中使用自定义过滤器：
-# # {%load myfilter%}用于导入templatetags中的myfilter.py文件
+# {%load myfilter%}用于导入templatetags中的myfilter.py文件
