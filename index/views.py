@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import csv
+from django.views.generic import ListView
 
 # Create your views here.
 from index.models import Product
@@ -57,4 +58,48 @@ def login(request):
     # 相对路径
     # return redirect('/')
     # 绝对路径
-    return redirect('http://127.0.0.1:8000/')
+    # return redirect('http://127.0.0.1:8000/')
+
+    # 通常情况下，访问某个URL地址为GET请求，在网页输入信息点击按钮提交时，用POST
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        return redirect('/')
+    else:
+        if request.GET.get('name'):
+            name = request.GET.get('name')
+        else:
+            name = 'Everyone'
+        return HttpResponse('username is ' + name)
+
+
+# 通用视图：
+# # TemplateView：直接返回HTML模板，无法显示数据库数据
+# # ListView：将数据库数据传给HTML模板，通常获取某个表的所有数据
+# # DetailView：将数据库数据传给HTML模板，通常获取某个表的单条数据
+
+
+class ProductList(ListView):
+    # context_object_name设置HTML模板的变量名称
+    context_object_name = 'type_list'
+    # 设定HTML模板
+    template_name = 'index_view.html'
+    # 查询数据
+    queryset = Product.objects.values('type').distinct()
+
+    # 重写get_queryset方法，对product模型进行筛选
+    # def get_queryset(self):
+    #     type_list = Product.objects.values('type').distinct()
+    #     return type_list
+
+    # 添加其他变量
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['name_list'] = Product.objects.values('name', 'type')
+        return context
+
+    def get_queryset(self):
+        print(self.kwargs['id'])
+        print(self.kwargs['name'])
+        print(self.request.method)
+        type_list = Product.objects.values('type').distinct()
+        return type_list

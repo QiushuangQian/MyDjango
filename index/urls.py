@@ -24,5 +24,10 @@ urlpatterns = {
 
     path('download.html', views.download),
 
-    path('login.html',views.login)
+    path('login.html', views.login),
+
+    # 指向通用视图ListView（通用视图都要加.as_view()）
+    path('index/', views.ProductList.as_view()),
+
+    path('index/<id>.html',views.ProductList.as_view(),{'name':'phone'})
 }
