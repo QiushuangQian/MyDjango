@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     # 查找静态资源路径
     'django.contrib.staticfiles',
     'index',
-    'user'
+    'user',
+    # 自定义过滤器
+    'user_defined'
 ]
 
 MIDDLEWARE = [

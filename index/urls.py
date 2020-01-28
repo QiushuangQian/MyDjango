@@ -29,5 +29,5 @@ urlpatterns = {
     # 指向通用视图ListView（通用视图都要加.as_view()）
     path('index/', views.ProductList.as_view()),
 
-    path('index/<id>.html',views.ProductList.as_view(),{'name':'phone'})
+    path('index/<id>.html', views.ProductList.as_view(), {'name': 'phone'})
 }
