@@ -44,3 +44,9 @@ forloop.parentloop：获取上层循环的forloop
 {%block body%}
 ... ...
 {%endblock%}
+
+过滤器：
+使用方法：{{variable|filter}}
+可支持多个过滤器同时使用：{{variable|filter|lower}}
+带参过滤器：{{variable|date:"D d M Y"}} //将日期格式数据按给定格式输出
+
